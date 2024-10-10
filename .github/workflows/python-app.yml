@@ -15,13 +15,21 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      
+      # Set up Python
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: '3.10'
+
+      # Install Python dependencies
       - name: Install dependencies
         run: make install
+
+      # Run the server
       - name: Run server
         run: make run & sleep 5
+
+      # Test the server at localhost
       - name: Test the server at localhost
         run: curl http://localhost:3000
